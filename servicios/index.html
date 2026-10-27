@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Servicios digitales para comercios | agimenezdev</title>
+<meta name="description" content="Web, Google Maps, asistente de WhatsApp, Instagram y gestión de socios para comercios de Buenos Aires. Cuatro paquetes con precio cerrado, sin permanencia.">
+<meta property="og:title" content="Servicios digitales para comercios | agimenezdev">
+<meta property="og:description" content="Todo lo que un local necesita para que lo encuentren y le compren, en un solo abono. Desde $60.000 por mes.">
+<meta property="og:image" content="https://agimenezdev.com/servicios/img/web-ilbruno.jpeg">
+<link rel="canonical" href="https://agimenezdev.com/servicios/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Tokens: misma marca que agimenezdev.com (verde azulado sobre neutros fríos). Layout: 1120px, hero partido, grilla 2x2, galería con snap. */
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --ink:#16181d; --muted:#5f6570; --line:#e4e2dc;
+  --accent:#0e8b7e; --accent2:#14b8a6; --accent-ink:#ffffff; --ink-soft:#3a3f47;
+  --tint:#e6f3f0; --warn:#b4541c;
+  --display:"Bricolage Grotesque","Manrope",system-ui,sans-serif;
+  --body:"Manrope",system-ui,sans-serif;
+  --r:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0f13; --panel:#15181e; --ink:#eef0f3; --muted:#9aa2ae; --line:#252a32;
+    --accent:#2dd4bf; --accent2:#5eead4; --accent-ink:#06201c; --ink-soft:#c3c8d0;
+    --tint:#122b28; --warn:#f0a66b; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d0f13; --panel:#15181e; --ink:#eef0f3; --muted:#9aa2ae; --line:#252a32;
+  --accent:#2dd4bf; --accent2:#5eead4; --accent-ink:#06201c; --ink-soft:#c3c8d0;
+  --tint:#122b28; --warn:#f0a66b; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px;}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;text-wrap:balance;margin:0;}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.08;}
+.sub{color:var(--muted);font-size:17px;max-width:60ch;margin:10px 0 0;}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px;}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.02em;}
+.brand span{color:var(--accent)}
+.nav nav{display:flex;align-items:center;gap:22px;font-weight:700;font-size:14px;}
+.nav nav a{color:var(--ink-soft)}
+.nav nav a.hide-sm{display:none}
+@media(min-width:720px){.nav nav a.hide-sm{display:inline}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:15px;border-radius:999px;padding:13px 22px;white-space:nowrap;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;border:1px solid transparent;}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 26px -14px color-mix(in srgb,var(--accent) 70%,transparent);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 30px -14px color-mix(in srgb,var(--accent) 80%,transparent);}
+.btn-ghost{background:var(--panel);border-color:var(--line);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--accent)}
+.btn svg{width:18px;height:18px;flex:none}
+.nav .btn{padding:10px 16px;font-size:14px}
+
+/* hero */
+.hero{padding-block:48px 24px;}
+@media(min-width:900px){.hero{padding-block:72px 40px}}
+.hero .wrap{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1.1fr .9fr;gap:48px}}
+.hero h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;line-height:1.04;}
+.hero h1 .hl{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero p{font-size:clamp(17px,2vw,20px);color:var(--ink-soft);max-width:48ch;margin:18px 0 0;}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center;}
+.hero .note{font-size:14px;color:var(--muted);margin-top:14px;}
+.phones{position:relative;height:520px;display:flex;justify-content:center;align-items:flex-end;}
+@media(min-width:900px){.phones{height:600px}}
+.phone{position:absolute;bottom:0;width:min(260px,62%);border-radius:30px;border:6px solid #1b1d22;background:#1b1d22;box-shadow:0 40px 70px -40px rgba(10,20,20,.55),0 0 0 1px rgba(0,0,0,.2);overflow:hidden;aspect-ratio:390/844;}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.phone.a{left:6%;transform:rotate(-6deg) translateY(10px);z-index:1;}
+.phone.b{right:6%;transform:rotate(4deg);z-index:2;}
+@media(min-width:900px){.phone.a{left:2%}.phone.b{right:2%}}
+
+/* recibo comparativo */
+.receipt{padding-block:40px;}
+.receipt .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:1fr;overflow:hidden;}
+@media(min-width:760px){.receipt .box{grid-template-columns:1.2fr 1fr}}
+.receipt .them{padding:28px 26px;border-bottom:1px solid var(--line);}
+@media(min-width:760px){.receipt .them{border-bottom:0;border-right:1px solid var(--line)}}
+.receipt .us{padding:28px 26px;background:var(--tint);display:flex;flex-direction:column;justify-content:center;gap:8px;}
+.receipt h3{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:14px;}
+.lines{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
+.lines li{display:flex;justify-content:space-between;gap:12px;font-size:15.5px;}
+.lines li span:last-child{font-weight:800;white-space:nowrap}
+.lines li.total{border-top:2px solid var(--ink);margin-top:6px;padding-top:12px;font-weight:800;font-size:17px;}
+.receipt .big{font-family:var(--display);font-weight:800;font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.03em;color:var(--accent);}
+.receipt .us p{margin:0;color:var(--ink-soft);font-size:15.5px;}
+.receipt .us .save{font-weight:800;color:var(--ink);font-size:17px;}
+
+/* paquetes */
+.packs{padding-block:56px 24px;}
+.packs .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px;}
+@media(min-width:820px){.packs .grid{grid-template-columns:1fr 1fr}}
+.pack{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column;gap:16px;position:relative;}
+.pack.star{border-color:var(--accent);box-shadow:0 30px 60px -44px color-mix(in srgb,var(--accent) 80%,transparent);}
+.pack .badge{position:absolute;top:-12px;left:22px;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px;}
+.pack h3{font-size:26px;font-weight:800;}
+.pack .who{color:var(--muted);font-size:15px;margin-top:2px;}
+.pack .price{display:flex;gap:26px;flex-wrap:wrap;}
+.pack .price div{display:flex;flex-direction:column}
+.pack .price .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;}
+.pack .price .v{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.02em;}
+.pack .price .v small{font-size:14px;color:var(--muted);font-weight:700;letter-spacing:0;}
+.inc{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.inc li{display:flex;gap:10px;align-items:flex-start;font-size:15px;}
+.inc li svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--accent);}
+.inc li.plus{font-weight:800}
+.pack .vs{margin-top:auto;border-top:1px dashed var(--line);padding-top:12px;font-size:14px;color:var(--muted);}
+.pack .vs b{color:var(--ink)}
+.pack .btn{align-self:flex-start}
+.packs .fine{color:var(--muted);font-size:14px;margin-top:16px;}
+
+/* galería */
+.gallery{padding-block:48px;}
+.gallery .track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:24px 10px;scrollbar-width:thin;margin-inline:-20px;padding-inline:20px;}
+.shot{flex:0 0 min(300px,78vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;}
+.shot .frame{border-radius:22px;border:5px solid #1b1d22;background:#1b1d22;overflow:hidden;aspect-ratio:390/700;box-shadow:0 30px 50px -36px rgba(10,20,20,.5);}
+.shot .frame img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.shot h3{font-size:17px;font-weight:800;}
+.shot p{margin:0;color:var(--muted);font-size:14.5px;}
+
+/* pasos */
+.steps{padding-block:40px 56px;}
+.steps ol{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:14px;counter-reset:s;}
+@media(min-width:760px){.steps ol{grid-template-columns:repeat(3,1fr)}}
+.steps li{counter-increment:s;border-top:3px solid var(--accent);padding-top:14px;display:grid;gap:6px;align-content:start;}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--accent);}
+.steps h3{font-size:18px;font-weight:800;}
+.steps p{margin:0;color:var(--muted);font-size:15px;}
+
+/* faq */
+.faq{padding-block:16px 56px;}
+.faq .list{margin-top:22px;display:grid;gap:10px;}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0 18px;}
+summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:800;font-size:16px;display:flex;justify-content:space-between;gap:12px;align-items:center;}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:22px;font-weight:700;flex:none;}
+details[open] summary::after{content:"–";}
+details p{margin:0 0 16px;color:var(--ink-soft);font-size:15px;max-width:70ch;}
+
+/* cierre */
+.close{padding-block:24px 64px;}
+.close .box{background:var(--ink);color:var(--bg);border-radius:var(--r);padding:36px 28px;display:grid;gap:18px;}
+@media(min-width:760px){.close .box{grid-template-columns:1.3fr auto;align-items:center;padding:44px 40px}}
+.close h2{color:var(--bg)}
+.close p{margin:8px 0 0;color:color-mix(in srgb,var(--bg) 75%,transparent);font-size:16px;max-width:52ch;}
+.close .btn-primary{justify-self:start}
+footer{border-top:1px solid var(--line);padding-block:22px 40px;color:var(--muted);font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;}
+footer a{color:var(--ink-soft);font-weight:700}
+
+/* motion */
+.reveal{transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+.js .reveal{opacity:0;transform:translateY(18px);}
+.js .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .btn{transition:none}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">agimenez<span>dev</span></a>
+    <nav>
+      <a class="hide-sm" href="#paquetes">Paquetes</a>
+      <a class="hide-sm" href="#como">Cómo funciona</a>
+      <a class="hide-sm" href="#faq">Preguntas</a>
+      <a class="btn btn-primary" href="https://wa.me/5491169799695?text=Hola%2C%20quiero%20una%20demo%20para%20mi%20local">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Pedir una demo
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Que te encuentren en Google y que <span class="hl">WhatsApp conteste solo.</span></h1>
+      <p>Web, ficha de Google Maps, reseñas y un asistente de WhatsApp para tu local, todo en un abono. Desde $60.000 por mes.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://wa.me/5491169799695?text=Hola%2C%20quiero%20una%20demo%20para%20mi%20local">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+          Pedir una demo
+        </a>
+        <a class="btn btn-ghost" href="#paquetes">Ver precios</a>
+      </div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone a"><img src="img/web-ilbruno.jpeg" alt="" width="390" height="844" loading="eager"></div>
+      <div class="phone b"><img src="img/bot-malvon.jpeg" alt="" width="390" height="844" loading="eager"></div>
+    </div>
+  </div>
+</section>
+
+<section class="receipt">
+  <div class="wrap">
+    <div class="box reveal">
+      <div class="them">
+        <h3>Lo mismo contratado por separado</h3>
+        <ul class="lines num">
+          <li><span>Bot de WhatsApp con IA (plan intermedio)</span><span>$230.950</span></li>
+          <li><span>Web por abono</span><span>$50.000</span></li>
+          <li><span>Mantener la ficha de Google Maps</span><span>$75.000</span></li>
+          <li><span>Menú o catálogo con QR</span><span>$20.000</span></li>
+          <li class="total"><span>Total por mes, en cuatro facturas</span><span>$375.950</span></li>
+        </ul>
+      </div>
+      <div class="us">
+        <span class="k">Paquete Atención, todo junto</span>
+        <span class="big num">$130.000</span>
+        <p>por mes, con un solo proveedor y un informe que te dice qué pasó.</p>
+        <span class="save num">Te quedan $245.950 por mes.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packs" id="paquetes">
+  <div class="wrap">
+    <h2>Cuatro paquetes. Cada uno incluye el anterior.</h2>
+    <p class="sub">Un pago de puesta en marcha y un abono mensual. Sin permanencia: si no te sirve, lo das de baja y listo.</p>
+
+    <div class="grid">
+      <article class="pack reveal">
+        <div>
+          <h3>Presencia</h3>
+          <p class="who">Para el local que todavía no aparece en Google.</p>
+        </div>
+        <div class="price num">
+          <div><span class="k">Puesta en marcha</span><span class="v">$180.000</span></div>
+          <div><span class="k">Por mes</span><span class="v">$60.000</span></div>
+        </div>
+        <ul class="inc">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Página web con tu logo, tus fotos y tu carta, lista en 48 horas</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Ficha de Google Maps creada o puesta al día: fotos, horarios, servicios</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Tarjeta NFC para que el cliente deje la reseña con un toque</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Respuesta a cada reseña, en tu tono, dentro del día</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Informe mensual de una página: cuánta gente te vio y cuántas reseñas sumaste</span></li>
+        </ul>
+        <p class="vs">Por separado: <b>$100.000 a $150.000 por mes</b>, sin NFC ni informe.</p>
+      </article>
+
+      <article class="pack star reveal">
+        <span class="badge">El más pedido</span>
+        <div>
+          <h3>Atención</h3>
+          <p class="who">Para el que pierde ventas por no llegar a contestar.</p>
+        </div>
+        <div class="price num">
+          <div><span class="k">Puesta en marcha</span><span class="v">$350.000</span></div>
+          <div><span class="k">Por mes</span><span class="v">$130.000</span></div>
+        </div>
+        <ul class="inc">
+          <li class="plus"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>Todo Presencia</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Asistente de WhatsApp las 24 horas: precios, horarios, reservas, turnos, pedidos</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Panel para vos: ves todas las charlas y agarrás la que quieras</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Hasta 500 charlas por mes incluidas</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Menú o catálogo con QR y recordatorio automático de turnos</span></li>
+        </ul>
+        <p class="vs">Por separado: <b>$220.000 a $375.000 por mes</b>, en cuatro proveedores.</p>
+      </article>
+
+      <article class="pack reveal">
+        <div>
+          <h3>Crecimiento</h3>
+          <p class="who">Para el que quiere más clientes, no solo atender a los que llegan.</p>
+        </div>
+        <div class="price num">
+          <div><span class="k">Puesta en marcha</span><span class="v">$500.000</span></div>
+          <div><span class="k">Por mes</span><span class="v">$280.000</span></div>
+        </div>
+        <ul class="inc">
+          <li class="plus"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>Todo Atención</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Instagram manejado: 8 publicaciones, 4 reels y 12 historias por mes, con tu marca</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Respuesta a comentarios y mensajes directos</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Recupero de clientes: un mensaje con promo al que hace 60 días que no viene</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Pedido de reseña después de cada compra y una campaña por mes a tu lista</span></li>
+        </ul>
+        <p class="vs">Por separado: <b>$500.000 a $780.000 por mes</b>. Un plan "integral" de agencia arranca en $500.000.</p>
+      </article>
+
+      <article class="pack reveal">
+        <div>
+          <h3>Gestión</h3>
+          <p class="who">Gimnasios, clubes, estudios, consultorios y academias.</p>
+        </div>
+        <div class="price num">
+          <div><span class="k">Puesta en marcha</span><span class="v">$800.000</span></div>
+          <div><span class="k">Por mes</span><span class="v">$380.000</span></div>
+        </div>
+        <ul class="inc">
+          <li class="plus"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>Todo Crecimiento</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Socios o pacientes: alta, planes, cuotas y vencimientos</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Cobro con Mercado Pago, débito automático y aviso por WhatsApp</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Acceso con QR desde el celu: quién entró, si pagó, cuántas veces vino</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>App del socio sin descargar nada y apto médico firmado desde el teléfono</span></li>
+        </ul>
+        <p class="vs">Por separado: <b>$520.000 a $830.000 por mes</b>, en cinco proveedores que no se hablan entre sí.</p>
+      </article>
+    </div>
+    <p class="fine">Precios en pesos para octubre y noviembre de 2026. La publicidad en Instagram o Google nunca está incluida: esa plata va directo a la plataforma. Más de 1.000 conversaciones de WhatsApp por mes tienen un costo extra de Meta de $37,68 cada una.</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <h2>Así se ve en el celu de tus clientes.</h2>
+    <p class="sub">Son productos reales que ya funcionan, no maquetas.</p>
+    <div class="track">
+      <figure class="shot reveal" style="margin:0">
+        <div class="frame"><img src="img/web-ilbruno.jpeg" alt="Web de una pizzería en Caballito, vista en un celular" width="390" height="700" loading="lazy"></div>
+        <figcaption><h3>La web del local</h3><p>Con sus fotos reales, su carta, horarios y botón para llamar o llegar.</p></figcaption>
+      </figure>
+      <figure class="shot reveal" style="margin:0">
+        <div class="frame"><img src="img/bot-malvon.jpeg" alt="Charla de WhatsApp donde el asistente toma una reserva" width="390" height="700" loading="lazy"></div>
+        <figcaption><h3>El asistente de WhatsApp</h3><p>Toma la reserva, ofrece horarios y pregunta a nombre de quién.</p></figcaption>
+      </figure>
+      <figure class="shot reveal" style="margin:0">
+        <div class="frame"><img src="img/toca.jpeg" alt="Página que abre la tarjeta NFC para dejar una reseña" width="390" height="700" loading="lazy"></div>
+        <figcaption><h3>La tarjeta de reseñas</h3><p>El cliente apoya el celu y le aparece todo: reseña, carta, WhatsApp.</p></figcaption>
+      </figure>
+      <figure class="shot reveal" style="margin:0">
+        <div class="frame"><img src="img/potenza.jpeg" alt="Web de un centro deportivo con el botón de clase de prueba" width="390" height="700" loading="lazy"></div>
+        <figcaption><h3>Gestión de socios</h3><p>Web, cuota, acceso con QR y app del socio para un centro deportivo.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="como">
+  <div class="wrap">
+    <h2>Cómo funciona</h2>
+    <ol>
+      <li class="reveal"><h3>Hablamos 20 minutos</h3><p>Por WhatsApp o en el local. Nos pasás el logo, el Instagram y lo que vendés. Nada más.</p></li>
+      <li class="reveal"><h3>En 48 horas te mostramos todo</h3><p>La web, la ficha de Google y el asistente andando. Si te gusta, pagás la puesta en marcha ese día.</p></li>
+      <li class="reveal"><h3>Un abono por mes, sin ataduras</h3><p>Cada mes te llega el informe. Si un mes no te sirve, lo cortás con un mensaje.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Preguntas que nos hacen siempre</h2>
+    <div class="list">
+      <details class="reveal"><summary>¿Quién contesta el WhatsApp, un robot?</summary><p>Un asistente que conoce tu carta, tus horarios y tus precios, y responde como lo harías vos. Cuando no sabe algo o el cliente pide hablar con alguien, te avisa y vos seguís la charla desde el panel.</p></details>
+      <details class="reveal"><summary>¿Tengo que firmar un contrato?</summary><p>No. Pagás la puesta en marcha cuando aprobás lo que te mostramos, y después un abono mensual. Lo das de baja cuando quieras, sin penalidad.</p></details>
+      <details class="reveal"><summary>¿La publicidad está incluida?</summary><p>No. Si querés hacer anuncios en Instagram o Google, la plata de la pauta va directo a la plataforma. Nosotros armamos y manejamos la campaña por un 15 % del presupuesto, con un mínimo de $60.000 por mes.</p></details>
+      <details class="reveal"><summary>¿Me consiguen reseñas de cinco estrellas?</summary><p>Te hacemos fácil pedirlas y las respondemos todas, buenas y malas. Google prohíbe pagar o dar descuentos por reseñas, y borra las reseñas del local que lo hace. Por eso no lo hacemos.</p></details>
+      <details class="reveal"><summary>¿Y si ya tengo web o Instagram?</summary><p>Mejor. Usamos lo que tenés: la web se mejora o se reemplaza, y el Instagram se maneja desde tu propia cuenta. Todo queda a tu nombre.</p></details>
+      <details class="reveal"><summary>¿Tengo más de un local?</summary><p>La segunda sucursal, con su propia ficha de Google y su número de WhatsApp, cuesta la mitad del abono del paquete.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="box reveal">
+      <div>
+        <h2>Vemos tu local y te mostramos cómo quedaría.</h2>
+        <p>En 48 horas tenés la web, la ficha y el asistente andando para probar. Sin compromiso.</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/5491169799695?text=Hola%2C%20quiero%20una%20demo%20para%20mi%20local">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Pedir una demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Andrés Giménez. Buenos Aires, Argentina.</span>
+    <span><a href="mailto:andres@agimenezdev.com">andres@agimenezdev.com</a></span>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in')});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
